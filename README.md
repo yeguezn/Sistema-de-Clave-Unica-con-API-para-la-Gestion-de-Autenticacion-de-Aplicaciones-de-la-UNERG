@@ -13,7 +13,6 @@ la versión 6.0.5 de mongodb.
 
 
 **************Pasos de instalación****************
-
 1) Acceder a esta ruta: C:\Windows\System32\drivers\etc y modificar el archivo "hosts", agregando
 el siguiente host: "127.0.0.1       sso.unerg.com" (sin comillas).
 
