@@ -1,0 +1,23 @@
+*{
+
+    font-family: "Berlin Sans FB";
+}
+            
+input{
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #D0CCCC;
+}
+
+img{
+
+    height: 150px;
+    width: 300px;
+}
+
+.button{
+    color: #FFF;
+    background-color: #000;
+    font-size: 20px;
+}

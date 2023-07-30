@@ -1,0 +1,703 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Registresé una vez e inicie sesión dónde sea",
+    "version": "1.0.0",
+    "title": "Sistema de Clave Única con API para la Gestión de Autenticación de Aplicaciones de la UNERG",
+    "license": {
+      "name": "",
+      "url": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "API para administrador",
+      "description": "El administrador puede crear nuevos usuarios, registrar aplicaciones, autorizar usuarios el acceso a aplicaciones."
+    }
+  ],
+   "servers": [
+        {
+        "url": "/"
+        }
+    ],
+       "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                    "type": "string"
+                    },
+                    "identity_document": {
+                    "type": "string"
+                    },
+                    "email": {
+                    "type":"string"
+                    },
+                    "password": {
+                    "type":"string"
+                    },
+                    "confirm_password": {
+                    "type":"string"
+                    },
+                    "cellphone": {
+                    "type":"string"
+                    },
+                    "app_1": {
+                    "type":"string"
+                    },
+                    "app_2": {
+                    "type":"string"
+                    }
+                }
+            },
+            "api_key":{
+            "type" : "string",
+            "properties" : {
+                "name" : {
+                    "type" : "string"
+                }
+            }
+        },
+            "email":{
+                "type": "string",
+                "properties":{
+                    "name":{
+                        "type":"string"
+                    }
+                }
+            },
+            
+            "login":{
+                "type": "object",
+                "properties":{
+                    "email":{
+                        "type":"string"
+                    },
+                    "password":{
+                        "type":"string"
+                    }
+                }
+            },
+            
+            "Aplication":{
+              "type": "object",
+              "properties" :{
+                "app_name": {
+                "type": "string"
+                },
+                "redirect_uri": {
+                "type": "string"
+                }
+                
+              }
+            }
+        }
+    },
+     "paths": {
+
+        "/login_admin":{
+
+            "post" :{
+                "tags": [
+                    "Inicio de sesión"
+                ],
+                "summary": "Al iniciar sesión el administrador obtendrá un token para operar la API",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/login"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/login"
+                        }
+                    }
+                }
+            }
+        },
+        
+        "/register_users": {
+            "post": {
+            "tags": [
+                "Registrar nuevo usuario"
+            ],
+
+            "parameters": [{
+            
+                "name": "x-access-token",
+                "in": "header",
+                "description": "Access Token",
+                "required": true,
+                "schema":{
+                    "type": "string"
+                }
+                    
+            }],
+            "summary": "Registrar nuevo usuario",
+            "requestBody": {
+            "description": "",
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/User"
+                    }
+                }
+            }
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/User"
+                    }
+                },
+                "401": {
+                    "description": "NOT AUTHORIZED",
+                    "schema": {
+                        "$ref": "#/components/schemas/User"
+                    }
+            }
+            }
+            }
+           
+        },
+        "/register_aplications": {
+            "post": {
+            "tags": [
+                "Registrar una nueva aplicación"
+            ],
+            "parameters": [{
+            
+                "name": "x-access-token",
+                "in": "header",
+                "description": "Access Token",
+                "required": true,
+                "schema":{
+                    "type": "string"
+                }
+                    
+            }],
+            "summary": "Registrar una nueva aplicación",
+            "requestBody": {
+            "description": "",
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/Aplication"
+                    }
+                }
+            }
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/Aplication"
+                    }
+                },
+                "404": {
+                    "description": "NOT FOUND",
+                    "schema": {
+                        "$ref": "#/components/schemas/Aplication"
+                    }
+                }
+            }
+            }
+           
+        },
+        "/get_aplication":{
+
+            "get" :{
+                "tags": [
+                    "Obtener datos de una aplicación"
+                ],
+                "summary": "Obtener datos de una aplicación a través de su API KEY asociada",
+                "parameters": [{
+                  "name": "api_key",
+                  "in": "query",
+                  "description": "",
+                  "required": true,
+                  "type": "integer",
+                  "schema" : {
+                      "$ref": "#/components/schemas/api_key"
+                  }
+                },
+
+                {
+            
+                    "name": "x-access-token",
+                    "in": "header",
+                    "description": "Access Token",
+                    "required": true,
+                    "schema":{
+                        "type": "string"
+                    }    
+                }],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/api_key"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/api_key"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/get_user":{
+
+            "get" :{
+                "tags": [
+                    "Obtener datos de un usuario"
+                ],
+                "summary": "Obtener datos de un usuario a través de su correo electrónico asociado",
+                "parameters": [{
+                  "name": "email",
+                  "in": "query",
+                  "description": "",
+                  "required": true,
+                  "type": "integer",
+                  "schema" : {
+                      "$ref": "#/components/schemas/email"
+                  }
+                },
+
+                {
+            
+                    "name": "x-access-token",
+                    "in": "header",
+                    "description": "Access Token",
+                    "required": true,
+                    "schema":{
+                        "type": "string"
+                    }    
+                }],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/email"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/email"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/get_users":{
+
+            "get" :{
+                "tags": [
+                    "Obtener datos de todos los usuarios"
+                ],
+                "summary": "Obtener datos de todos los usuarios registrados",
+                "parameters": [{
+                    
+                    "name": "x-access-token",
+                    "in": "header",
+                    "description": "Access Token",
+                    "required": true,
+                    "schema":{
+                        "type": "string"
+                    }
+                }],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/authorization_user":{
+
+            "put" :{
+                "tags": [
+                    "Autorizar que determinado usuario pueda acceder a determinada aplicación"
+                ],
+                "summary": "Autorizar que determinado usuario pueda acceder a determinada aplicación",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "schema" : {
+                            "$ref": "#/components/schemas/email"
+                        }
+                    },
+
+                    {
+                        "name": "api_key",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "schema" : {
+                            "$ref": "#/components/schemas/api_key"
+                        }
+                    }
+
+                ],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/reject_user":{
+
+            "put" :{
+                "tags": [
+                    "Rechazar la solicitud de acceso a un usuario a una determinada aplicación"
+                ],
+                "summary": "Rechazar la solicitud de acceso a un usuario a una determinada aplicación",
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "schema" : {
+                            "$ref": "#/components/schemas/email"
+                        }
+                    },
+
+                    {
+                        "name": "api_key",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "schema" : {
+                            "$ref": "#/components/schemas/api_key"
+                        }
+                    }
+
+                ],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/get_aplications":{
+
+            "get" :{
+                "tags": [
+                    "Obtener datos de todas las aplicaciones"
+                ],
+                "summary": "Obtener datos de todos los datos de las aplicaciones registradas",
+                "parameters": [{
+                    
+                    "name": "x-access-token",
+                    "in": "header",
+                    "description": "Access Token",
+                    "required": true,
+                    "schema":{
+                        "type": "string"
+                    }
+                }],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/delete_user":{
+
+            "delete" :{
+                "tags": [
+                    "Elimina un usuario en específico"
+                ],
+                "summary": "Elimina un usuario en específico",
+                "parameters": [
+                    {
+                    
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+
+                    {
+                    
+                        "name": "email",
+                        "in": "query",
+                        "description": "User email",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+
+                ],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/delete_aplication":{
+
+            "delete" :{
+                "tags": [
+                    "Elimina una aplicación en específico"
+                ],
+                "summary": "Elimina una aplicación en específico",
+                "parameters": [
+                    {
+                    
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+
+                    {
+                    
+                        "name": "API KEY",
+                        "in": "query",
+                        "description": "API KEY",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+
+                ],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/enable_aplication":{
+
+            "put" :{
+                "tags": [
+                    "Habilita una aplicación"
+                ],
+                "summary": "Habilita una aplicación",
+                "parameters": [
+                    {
+                    
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+
+                    {
+                    
+                        "name": "api_key",
+                        "in": "query",
+                        "description": "API KEY",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+
+                ],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/disable_aplication":{
+
+            "put" :{
+                "tags": [
+                    "Deshabilita una aplicación"
+                ],
+                "summary": "Deshabilita una aplicación",
+                "parameters": [
+                    {
+                    
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Access Token",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+
+                    {
+                    
+                        "name": "api_key",
+                        "in": "query",
+                        "description": "API KEY",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+
+                ],
+               
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    },
+                    "401": {
+                        "description": "NOT AUTHORIZED",
+                        "schema": {
+                            "$ref": "#/components/schemas/Aplication"
+                        }
+                    }
+                }
+            }
+        }
+ 
+
+    }
+}
