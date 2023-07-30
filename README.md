@@ -16,7 +16,7 @@ la versión 6.0.5 de mongodb.
 1) Acceder a esta ruta: C:\Windows\System32\drivers\etc y modificar el archivo "hosts", agregando
 el siguiente host: "127.0.0.1       sso.unerg.com" (sin comillas).
 
-2)Descomprimir el archivo flask_app.rar.
+2)Clonar este repositorio con el comando git clone.
 
 3)Acceder por terminal a la carpeta flask_app crear un entorno virtual con el comando: 
 "python -m venv venv" (sin comillas), ejemplo: 
