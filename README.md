@@ -1,6 +1,7 @@
 # Sistema-de-Clave-Unica-con-API-para-la-Gestion-de-Autenticacion-de-Aplicaciones-de-la-UNERG
 ****************Requisitos******************
 1)Tener el lenguaje de programación Python instalado.
+
 2)Tener mongodb y mongodb compass instalado. Además de tener creada
 una base de datos "users" y en ella tener creadas las siguientes colecciones: 
 admin, users_accounts, cellphone, developers. Los schemas de las colecciones
