@@ -1,5 +1,6 @@
 # Sistema-de-Clave-Unica-con-API-para-la-Gestion-de-Autenticacion-de-Aplicaciones-de-la-UNERG
 ****************Requisitos******************
+
 1)Tener el lenguaje de programación Python instalado.
 
 2)Tener mongodb y mongodb compass instalado. Además de tener creada
@@ -10,11 +11,9 @@ ya dichas figuran en la carpeta db del proyecto.
 NOTA: Se usó la versión 3.10.10 de python, mongodb compass 1.36.1 y
 la versión 6.0.5 de mongodb.
 
-*********Credenciales de la cuenta de Google developers**********
-email: sso.unerg.ais@gmail.com
-Contraseña: 2G7p%6#d
 
 **************Pasos de instalación****************
+
 1) Acceder a esta ruta: C:\Windows\System32\drivers\etc y modificar el archivo "hosts", agregando
 el siguiente host: "127.0.0.1       sso.unerg.com" (sin comillas).
 
