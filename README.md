@@ -13,7 +13,7 @@ la versión 6.0.5 de mongodb.
 
 
 **************Pasos de instalación****************
-1) Acceder a esta ruta: C:\Windows\System32\drivers\etc y modificar el archivo "hosts", agregando
+1) Acceder a esta ruta en windows: C:\Windows\System32\drivers\etc y modificar el archivo "hosts" o "/etc/hosts" en linux, agregando
 el siguiente host: "127.0.0.1       sso.unerg.com" (sin comillas).
 
 2)Clonar este repositorio con el comando git clone.
