@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/custom_css/style.css')}}">
+		<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.png')}}">
+		<meta charset="utf-8">
+	</head>
+	<body>
+
+		<div class="d-flex justify-content-center mb-5">
+			<img src="{{ url_for('static', filename='img/logo_unerg.png') }}">
+		</div>
+
+		{% if ctx['warning']  %}
+
+			<div class="d-flex flex-column align-items-center row">
+				<div class="alert alert-danger col-6 text-center" role="alert">
+  					{{ ctx['warning'] }}
+				</div>
+			</div>
+
+		{% endif %}
+
+		<div class="d-flex justify-content-center mb-4">
+			<h1>Completa el registro</h1>
+		</div>
+		<form method="post" action="/complete_register" class="d-flex flex-column align-items-center">
+
+			<div class="mb-4 d-flex flex-column">
+				<label for="emailUsuario">Correo Electrónico</label>
+				<input type="email" name="email" value="{{ ctx['user_email'] }}" readonly id="emailUsuario">
+			</div>
+			
+			<div class="mb-4 d-flex flex-column">
+				<label for="nombreUsuario">Nombre</label>
+				<input type="text" name="name" value="{{ ctx['user_name'] }}" id="nombreUsuario" readonly>
+			</div>
+			
+			<div class="mb-4 d-flex flex-column">
+				<label for="cedulaUsuario">Cédula</label>
+				<input type="text" name="identity_document" value="{{ctx['identity_document']}}" id="cedulaUsuario">
+			</div>
+
+			<div class="mb-4 d-flex flex-column">
+				<label for="telefonoUsuario">Teléfono</label>
+				<input type="text" name="cellphone" value="{{ctx['cellphone']}}" id="telefonoUsuario">
+			</div>
+			
+			<div>
+				<input type="submit" value="Registrar" class="button">
+			</div>
+		</form>
+	</body>
+</html>

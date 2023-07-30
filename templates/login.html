@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Iniciar Sesión</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/custom_css/style.css')}}">
+		<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.png')}}">
+		<meta charset="utf-8">
+	</head>
+	<body>
+
+		<div class="d-flex justify-content-center mb-5">
+			<img src="{{ url_for('static', filename='img/logo_unerg.png') }}">
+		</div>
+
+		{% if warning %}
+
+			<div class="d-flex flex-column align-items-center row">
+				<div class="alert alert-danger col-6 text-center" role="alert">
+  					{{ warning }}
+				</div>
+			</div>
+
+		{% endif %}
+
+		<div class="d-flex justify-content-center mb-4">
+			<h1>Inicio de Sesión</h1>
+		</div>
+		<form method="post" action="{{ action }}" class="d-flex flex-column align-items-center">
+			<div class="mb-4 d-flex flex-column">
+				<label for="correoElectronico">Correo Electrónico</label>
+				<input type="email" name="email" placeholder="Correo Electrónico" id="correoElectronico">
+			</div>
+			<div class="mb-4 d-flex flex-column">
+				<label for="contraseniaUsuario">Contraseña</label>
+				<input type="password" name="password" placeholder="Contraseña" id="contraseniaUsuario">
+			</div>
+			<div>
+				<input type="submit" value="Iniciar Sesión" class="button">
+			</div>
+		</form>
+	</body>
+</html>
