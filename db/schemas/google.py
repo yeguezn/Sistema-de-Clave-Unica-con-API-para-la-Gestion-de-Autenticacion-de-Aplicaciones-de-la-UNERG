@@ -1,7 +1,6 @@
 from db.connection import db
 from bson.objectid import ObjectId
 
-
 def google_schema(user_data, cellphone_id, api_key):
 	
 	document = {

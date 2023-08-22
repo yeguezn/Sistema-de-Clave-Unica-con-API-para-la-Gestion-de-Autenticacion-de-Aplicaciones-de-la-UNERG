@@ -80,7 +80,7 @@
                 }
             },
             
-            "Aplication":{
+            "Application":{
               "type": "object",
               "properties" :{
                 "app_name": {
@@ -177,7 +177,7 @@
             }
            
         },
-        "/register_aplications": {
+        "/register_applications": {
             "post": {
             "tags": [
                 "Registrar una nueva aplicación"
@@ -200,7 +200,7 @@
             "content": {
                 "application/json": {
                 "schema": {
-                    "$ref": "#/components/schemas/Aplication"
+                    "$ref": "#/components/schemas/Application"
                     }
                 }
             }
@@ -209,20 +209,20 @@
                 "200": {
                     "description": "OK",
                     "schema": {
-                    "$ref": "#/components/schemas/Aplication"
+                    "$ref": "#/components/schemas/Application"
                     }
                 },
                 "404": {
                     "description": "NOT FOUND",
                     "schema": {
-                        "$ref": "#/components/schemas/Aplication"
+                        "$ref": "#/components/schemas/Application"
                     }
                 }
             }
             }
            
         },
-        "/get_aplication":{
+        "/get_application":{
 
             "get" :{
                 "tags": [
@@ -467,7 +467,7 @@
             }
         },
 
-        "/get_aplications":{
+        "/get_applications":{
 
             "get" :{
                 "tags": [
@@ -489,13 +489,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     },
                     "401": {
                         "description": "NOT AUTHORIZED",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     }
                 }
@@ -551,7 +551,7 @@
             }
         },
 
-        "/delete_aplication":{
+        "/delete_application":{
 
             "delete" :{
                 "tags": [
@@ -587,20 +587,20 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     },
                     "401": {
                         "description": "NOT AUTHORIZED",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     }
                 }
             }
         },
 
-        "/enable_aplication":{
+        "/enable_application":{
 
             "put" :{
                 "tags": [
@@ -636,20 +636,20 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     },
                     "401": {
                         "description": "NOT AUTHORIZED",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     }
                 }
             }
         },
 
-        "/disable_aplication":{
+        "/disable_application":{
 
             "put" :{
                 "tags": [
@@ -685,13 +685,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     },
                     "401": {
                         "description": "NOT AUTHORIZED",
                         "schema": {
-                            "$ref": "#/components/schemas/Aplication"
+                            "$ref": "#/components/schemas/Application"
                         }
                     }
                 }

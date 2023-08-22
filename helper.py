@@ -54,7 +54,7 @@ def apikey_parameter_required(f):
         if request.args.get("api_key") is None:
             return jsonify({"msg":"API KEY sin especificar"})
 
-        if db.developers.count_documents({"api_key":request.args.get("api_key")}) == 0:
+        if db.apps.count_documents({"api_key":request.args.get("api_key")}) == 0:
             return jsonify({"msg":"La API KEY proporcionada no está asignada a ninguna aplicación"})
 
         return f(*args, **kwargs)
@@ -62,7 +62,7 @@ def apikey_parameter_required(f):
     return decorated
 
 def get_authorized_users(apikey):
-    app_data = db.developers.aggregate([
+    app_data = db.apps.aggregate([
         {
             "$match":{
                 "api_key":apikey
@@ -84,7 +84,7 @@ def get_authorized_users(apikey):
     return app_data[0]["user_group"]
 
 def get_app_name(api_key):
-    app_data = db.developers.aggregate([
+    app_data = db.apps.aggregate([
         {
             "$match":{
                 "api_key":api_key
@@ -105,7 +105,7 @@ def get_app_name(api_key):
     return app_data[0]["app_name"]
 
 def get_app_redirect_uri(apikey, token):
-    app_data = db.developers.aggregate([
+    app_data = db.apps.aggregate([
         {
             "$match":{
                 "api_key":apikey
@@ -147,7 +147,7 @@ def register_cellphone(cellphone_number):
     return cellphone["_id"]
 
 def is_enabled(api_key):
-    app_data = db.developers.aggregate([
+    app_data = db.apps.aggregate([
         {
             "$match":{
                 "api_key":api_key
@@ -172,7 +172,7 @@ def is_enabled(api_key):
     return app_data[0]["enabled"]
 
 def get_app_signature(api_key):
-    app_data = db.developers.aggregate([
+    app_data = db.apps.aggregate([
         {
             "$match":{
                 "api_key":api_key
