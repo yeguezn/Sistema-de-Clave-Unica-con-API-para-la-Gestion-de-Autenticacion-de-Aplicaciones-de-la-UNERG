@@ -1,3 +1,6 @@
+
+
+
 # Sistema de Clave Única con API para la Gestión de Autenticación de Aplicaciones de la UNERG
 
 ## Descripción General
@@ -76,14 +79,15 @@ cd ..
 Windows
 
 ```bash
-pip install -r requirements.txt #comando para windows
+pip install -r requirements.txt 
 ```
 
 Linux
 
 ```bash
-pip3 install -r requirements.txt #comando para linux
+pip3 install -r requirements.txt 
 ```
+
 
 
 
