@@ -55,33 +55,35 @@ cd flask_app
 python3 -m venv venv
 ```
 5. Activar el entorno virtual
+
+Windows
 ```bash
-#Activar entorno virtual en Windows
 cd venv/scripts
 activate
-(venv) cd.. #comando para regresar a la carpeta venv
-(venv) cd.. #comando para regresar a la carpeta flask_app
+cd..
+cd.. 
 ```
+
+Linux
 ```bash
-#Activar entorno virtual en Linux
-$ cd venv/bin
-$ source activate
-(venv) cd .. #comando para regresar a la carpeta venv
-(venv) cd .. #comando para regresar a la carpeta flask_app
+cd venv/bin
+source activate
+cd .. 
+cd .. 
 ```
 6. Instalar las dependencias, se hace con el siguiente comando
+
+Windows
+
 ```bash
-(venv) pip install -r requirements.txt #comando para windows
+pip install -r requirements.txt #comando para windows
 ```
+
+Linux
+
 ```bash
-(venv) $ pip3 install -r requirements.txt #comando para linux
+pip3 install -r requirements.txt #comando para linux
 ```
-
-
-
-
-
-
 
 
 
