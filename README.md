@@ -6,6 +6,7 @@
 El presente producto tecnológico formó parte de mi proyecto de grado en la **Universidad Nacional Experimental Rómulo Gallegos** (UNERG). Dicho producto tecnológico fue presentado en Julio del año 2023.
 
 **Autor**: Nelson Yegüez.
+
 **Calificación**: 9/10.
 
 ### introducción
@@ -38,7 +39,9 @@ La variable `DB_NAME` debe contener el valor: `auth_api`.
 ## Instalación
 **NOTA: A partir del paso 2 se debe hacer uso de la terminal o cmd**.
 1. Primeramente se necesita registrar el siguiente nombre de dominio `sso.unerg.com` en el archivo hosts del sistema operativo que se esté usando. Este paso es fundamental para poner en marcha el proyecto y usar el servicio de Google. A continuación se describirán los pasos a seguir para modificar el archivo host en lo sistemas operativos Linux y Windows.
+
 [Pasos para modificar el archivo host en windows](./HOST_FILE_WINDOWS_TUTORIAL.md).
+
 [Pasos para modificar el archivo host linux](./HOST_FILE_LINUX_TUTORIAL.md).
 
 2.Clonar este repositorio
