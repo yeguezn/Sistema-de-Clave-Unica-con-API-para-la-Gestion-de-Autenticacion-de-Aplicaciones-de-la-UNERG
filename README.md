@@ -1,6 +1,3 @@
-
-
-
 # Sistema de Clave Única con API para la Gestión de Autenticación de Aplicaciones de la UNERG
 
 ## Descripción General
@@ -87,6 +84,21 @@ Linux
 ```bash
 pip3 install -r requirements.txt 
 ```
+
+7. Ejecutar el archivo `app.py` mediante el siguiente comando (funciona tanto en Windows y/o en Linux)
+
+```bash
+python app.py
+```
+
+8. Acceder en el navegador a la siguiente URL: https://sso.unerg.com:5000/swagger/#/ 
+
+## Demo
+
+Para ver su funcionalidad, click en el enlace: https://youtu.be/fTnTk24KSX8
+
+
+
 
 
 
