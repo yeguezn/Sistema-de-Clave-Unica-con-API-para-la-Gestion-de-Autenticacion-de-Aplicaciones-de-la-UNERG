@@ -20,7 +20,7 @@ Este proyecto consiste en una API que tiene las siguientes características:
 - Gestor de Base de datos MongoDB **(versión 6.0.5)**.
 - Framework Flask **(versión 2.2.3)**.
 - Swagger para documentar y probar la API.
-- JSON Web Token (JWT).
+- JavaScript Web Token (JWT).
 
 ## Consideraciones previas a la instalación
 Antes de avanzar a la instalación es necesario generar un archivo `.env` que contenga las siguientes variables de entorno:
