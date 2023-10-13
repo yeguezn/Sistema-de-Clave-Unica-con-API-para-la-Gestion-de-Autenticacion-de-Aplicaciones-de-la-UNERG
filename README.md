@@ -28,7 +28,7 @@ Antes de avanzar a la instalación es necesario generar un archivo `.env` que co
 - `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET`.
 - `DB_NAME`.
 
-**NOTA: Es importante que entre palabras haya un carácter underscore "_" de por medio y, una vez clonado este repositorio (que se explicará más adelante cómo hacerlo), colocar el archivo `.env` debe ir en la raiz del proyecto**.
+**NOTA: Es importante que entre palabras haya un carácter underscore "_" de por medio y, una vez clonado este repositorio (que se explicará más adelante cómo hacerlo), colocar el archivo `.env` en la raiz del proyecto**.
 
 La `SECRET_KEY` puede contener cualquier valor como por ejemplo: `123`. Sin embargo se sugiere un valor más complejo con el fin de hacer que el proyecto no sea fácilmente vulnerable.
 
